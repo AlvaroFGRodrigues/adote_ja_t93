@@ -17,7 +17,9 @@ class FuncionarioFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nome'=>fake()->name(),
+            'email'=>fake()->email(),
+            'cpf'=>fake()->numberBetween(1,11)
         ];
     }
 }

@@ -17,7 +17,16 @@ class DonoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'id_dono'=>fake()->numberBetween(1,10),
+            'id_status'=>fake()->numberBetween(1,3),
+            'apto'=>fake()->tinyint(1,2),
+            'nome'=>fake()->name(),
+            'nascimento'=>fake()->date(),
+            'email'=>fake()->email(),
+            'telefone'=>fake()->phoneNumber(),
+            'cpf'=>fake()->numberBetween(1,10),
+            'motivo'=>fake()->text(),
+            'historico'=>fake()->text()
         ];
     }
 }
