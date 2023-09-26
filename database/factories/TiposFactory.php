@@ -17,7 +17,7 @@ class TiposFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'tipos'=>fake()->numberBetween(1,2)
         ];
     }
 }

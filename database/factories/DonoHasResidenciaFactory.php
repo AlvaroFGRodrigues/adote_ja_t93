@@ -17,7 +17,8 @@ class DonoHasResidenciaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
-        ];
+            'id_dono'=>fake()->numberBetween(1,10),
+            'id_residenica'=>fake()->numberBetween(1,10)
+                ];
     }
 }

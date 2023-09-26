@@ -17,7 +17,7 @@ class TamanhoResidenciaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'tamanho_residencia'=>fake()->numberBetween(1,10)
         ];
     }
 }
