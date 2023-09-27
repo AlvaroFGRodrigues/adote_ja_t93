@@ -24,7 +24,7 @@ class DonoFactory extends Factory
             'nascimento'=>fake()->date(),
             'email'=>fake()->email(),
             'telefone'=>fake()->phoneNumber(),
-            'cpf'=>fake()->numberBetween(1,10),
+            'cpf'=>fake()->numberBetween(11111111111,99999999999),
             'motivo'=>fake()->text(),
             'historico'=>fake()->text()
         ];
