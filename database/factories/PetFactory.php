@@ -26,22 +26,8 @@ return new class extends Migration
 
         Schema::create('tipos', function (Blueprint $table) {
 
-            $table->increments('id_pet');
-            $table->integer('id_porte');
-            $table->integer('id_genero');
-            $table->integer('id_tipo');
-            $table->integer('id_controle');
-            $table->string('nome_pet',45);
-            $table->string('idade');
-            $table->string('descricao',45);
-            $table->string('vacinas',45);
-            $table->string('racao',45);
-            $table->string('historico',45);
-            $table->timestamps();
-            $table->softDeletes();
-
-
             // lll fasfasfasfasfasf
+
 
         });
 
