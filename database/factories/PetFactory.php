@@ -17,9 +17,9 @@ class PetFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_porte'=>fake()->numberBetween(1,10),
+            'id_porte'=>fake()->numberBetween(1,3),
             'id_genero'=>fake()->numberBetween(1,2),
-            'id_tipo'=>fake()->numberBetween(1,10),
+            'id_tipo'=>fake()->numberBetween(1,2),
             'id_controle'=>fake()->numberBetween(1,10),
             'nome'=>fake()->name(),
             'idade'=>fake()->date(),
