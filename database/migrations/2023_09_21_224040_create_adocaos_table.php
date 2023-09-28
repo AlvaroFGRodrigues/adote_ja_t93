@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 return new class extends Migration
 {
@@ -11,9 +12,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('adocaos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('adocao', function (Blueprint $table) {
+            $table->increments('id_controle');
+            $table->integer('id_funcionario');
+            $table->dateTime('adocao');
+            $table->integer('id_dono');
+            $table->integer('id_status_adocao');
+            $table->softDeletes('');
+
         });
     }
 
