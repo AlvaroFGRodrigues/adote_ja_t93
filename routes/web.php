@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FuncionarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,24 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::prefix('funcionario')
+->controller(FuncionarioController::class)
+->middleware('auth')
+->group(function () {
+    Route::get('/', 'index')
+        ->name('funcionario.index');
+    Route::get('/novo', 'create')
+        ->name('funcionario.create');
+    Route::get('/editar/{id}', 'edit')
+        ->name('funcionario.edit');
+    Route::get('exibir/{id}', 'show')
+        ->name('funcionario.show');
+
+    Route::post('cadastrar', 'store')
+        ->name('funcionario.store');
+    Route::post('atualizar/{id}', 'update')
+        ->name('funcionario.update');
+    Route::post('excluir/{id}', 'destroy')
+        ->name('funcionario.destroy');
+});

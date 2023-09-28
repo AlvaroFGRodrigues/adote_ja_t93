@@ -12,9 +12,28 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('StatusAdocaos', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_status_adocao');
             $table->timestamps();
         });
+
+        \App\Models\StatusAdocao::create([
+            'id_status' => 1,
+            'status' => 'Aprovado'
+        ]);
+
+        \App\Models\StatusAdocao::create([
+            'id_status' => 2,
+            'status' => 'Analisando'
+        ]);
+
+        \App\Models\StatusAdocao::create([
+            'id_status' => 3,
+            'status' => 'Reprovado'
+        ]);
+
+
+
+
     }
 
     /**

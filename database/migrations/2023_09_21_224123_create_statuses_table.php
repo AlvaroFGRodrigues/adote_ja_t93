@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 return new class extends Migration
 {
@@ -12,8 +13,24 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('statuses', function (Blueprint $table) {
-            $table->id();
+            $table->increments('status');
             $table->timestamps();
+            $table->softDeletes();
+
+
+            \App\Models\Status::create([
+                'id_status' => 1,
+                'status' => 'Aprovado'
+            ]);
+
+
+            \App\Models\Status::create([
+                'id_status' => 2,
+                'tipos' => 'reprovado'
+            ]);
+
+
+
         });
     }
 

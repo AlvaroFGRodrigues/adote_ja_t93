@@ -12,9 +12,21 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('generos', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_genero');
+
             $table->timestamps();
+
         });
+        \App\Models\Genero::create([
+            'id_genero' => 1,
+            'genero' => 'masculino'
+        ]);
+
+
+        \App\Models\Genero::create([
+            'id_genero' => 2,
+            'genero' => 'feminino'
+        ]);
     }
 
     /**
