@@ -11,7 +11,7 @@ class Porte extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'porte';
+    protected $table = 'portes';
     protected $primaryKey = 'id_porte';
     protected $dates = [
         'created_at',
@@ -20,10 +20,7 @@ class Porte extends Model
     ];
 
     protected $fillable = [
-        'portes'
-
-
-
+        'porte'
     ];
 
       // RELACIONAMENTOS
@@ -33,8 +30,6 @@ class Porte extends Model
             Pet::class,
             'id_porte',
             'id_porte'
-
-
         );
     }
 

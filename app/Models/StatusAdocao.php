@@ -11,7 +11,7 @@ class StatusAdocao extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'StatusAdocao';
+    protected $table = 'StatusAdocoes';
     protected $primaryKey = 'id_StatusAdocao';
     protected $dates = [
         'created_at',

@@ -18,10 +18,8 @@ class Tipos extends Model
     ];
 
     protected $fillable = [
-        'tipos',
-
-
-    ];
+        'tipo',
+        ];
 
       // RELACIONAMENTOS
 
@@ -30,8 +28,6 @@ class Tipos extends Model
             Pet::class,
             'id_tipo',
             'id_tipo'
-
-
         );
     }
 

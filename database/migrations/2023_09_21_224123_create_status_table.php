@@ -4,7 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Tipos;
 
 return new class extends Migration
 {
@@ -13,23 +12,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipos', function (Blueprint $table) {
-            $table->increments('id_tipo');
-            $table->string('tipo', 100);
+        Schema::create('status', function (Blueprint $table) {
+            $table->increments('id_status');
+            $table->string('status',45);
             $table->timestamps();
             $table->softDeletes();
+
         });
-
-        \App\Models\Tipos::create([
-            'id_tipo' => 1,
-            'tipo' => 'gato'
+        \App\Models\Status::create([
+            'id_status' => 1,
+            'status' => 'Aprovado'
         ]);
 
 
-        \App\Models\Tipos::create([
-            'id_tipo' => 2,
-            'tipo' => 'cachorro'
+        \App\Models\Status::create([
+            'id_status' => 2,
+            'status' => 'reprovado'
         ]);
+
     }
 
     /**
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipos');
+        Schema::dropIfExists('status');
     }
 };

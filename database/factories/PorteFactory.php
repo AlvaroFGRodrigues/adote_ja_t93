@@ -17,7 +17,7 @@ class PorteFactory extends Factory
     public function definition(): array
     {
         return [
-            'portes'=>fake()->numberBetween(1.3)
+            'porte'=>fake()->numberBetween(1,3)
         ];
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 return new class extends Migration
 {
     /**
@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('generos', function (Blueprint $table) {
             $table->increments('id_genero');
-
+            $table->string('genero',45);
             $table->timestamps();
-
+            $table->softDeletes();
         });
+
         \App\Models\Genero::create([
             'id_genero' => 1,
             'genero' => 'masculino'

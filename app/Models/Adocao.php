@@ -14,7 +14,7 @@ class Adocao extends Model
 {
         use HasFactory, SoftDeletes;
 
-        protected $table = 'adocao';
+        protected $table = 'adocoes';
         protected $primaryKey = 'id_controle';
         protected $dates = [
             'created_at',

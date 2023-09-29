@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Status;
 use App\Models\Adocao;
 use App\Models\DonoHasResidencia;
-class Dono extends Model
+class Donos extends Model
 {
 
     use HasFactory, SoftDeletes;
 
-    protected $table = 'dono';
+    protected $table = 'donos';
     protected $primaryKey = 'id_dono';
     protected $dates = [
         'created_at',

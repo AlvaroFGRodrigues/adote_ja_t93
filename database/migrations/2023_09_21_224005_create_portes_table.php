@@ -12,26 +12,26 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('portes', function (Blueprint $table) {
-            $table->increments('id_portes');
+            $table->increments('id_porte');
+            $table->string('porte',45);
             $table->timestamps();
             $table->softDeletes();
-
-
-            \App\Models\Porte::create([
-                'id_porte' => 1,
-                'portes' => 'pequeno'
-            ]);
-
-
-            \App\Models\Genero::create([
-                'id_porte' => 2,
-                'portes' => 'médio'
-            ]);
-            \App\Models\Genero::create([
-                'id_porte' => 3,
-                'portes' => 'grande'
-            ]);
         });
+
+        \App\Models\Porte::create([
+            'id_porte' => 1,
+            'porte' => 'pequeno'
+        ]);
+
+
+        \App\Models\Porte::create([
+            'id_porte' => 2,
+            'porte' => 'médio'
+        ]);
+        \App\Models\Porte::create([
+            'id_porte' => 3,
+            'porte' => 'grande'
+        ]);
     }
 
     /**
