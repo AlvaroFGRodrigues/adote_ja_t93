@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Porte;
+use App\Models\Tipos;
+use App\Models\Genero;
+use App\Models\Adocao;
 
 class Pet extends Model
 {

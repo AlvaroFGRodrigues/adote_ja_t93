@@ -56,4 +56,30 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+
+
+
+
+
 });
+
+Route::prefix('centro-custo')
+    ->controller(CentroCustoController::class)
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/', 'index')
+            ->name('centro.index');
+        Route::get('/novo', 'create')
+            ->name('centro.create');
+        Route::get('/editar/{id}', 'edit')
+            ->name('centro.edit');
+        Route::get('exibir/{id}', 'show')
+            ->name('centro.show');
+
+        Route::post('cadastrar', 'store')
+            ->name('centro.store');
+        Route::post('atualizar/{id}', 'update')
+            ->name('centro.update');
+        Route::post('excluir/{id}', 'destroy')
+            ->name('centro.destroy');
+    });
