@@ -76,11 +76,11 @@
                         <p class="m-0">8:00 - 19:00</p>
                     </div>
                     <div class="d-inline-flex flex-column text-center px-3 border-right">
-                        <h6>Email Us</h6>
+                        <h6>Email</h6>
                         <p class="m-0">Adoteja@gmail.com</p>
                     </div>
                     <div class="d-inline-flex flex-column text-center pl-3">
-                        <h6>Call Us</h6>
+                        <h6>Telefone</h6>
                         <p class="m-0">+55 011 969563941</p>
                     </div>
                 </div>
@@ -102,8 +102,8 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Inicio</a>
-                    <a href="about.html" class="nav-item nav-link">Sobre</a>
+                    <a href="{{route('base')}}" class="nav-item nav-link active">Inicio</a>
+                    <a href="{{route('sobre')}}" class="nav-item nav-link">Sobre</a>
                     <a href="service.html" class="nav-item nav-link">Serviço</a>
 
 

@@ -33,7 +33,9 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/base', function () {
     return view('projeto.test');
-});
+})->name("base");
 
-
+Route::get('/sobre', function () {
+    return view('projeto.sobre');
+})->name("sobre");
 require __DIR__.'/auth.php';
