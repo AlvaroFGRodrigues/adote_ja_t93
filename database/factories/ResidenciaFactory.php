@@ -17,7 +17,11 @@ class ResidenciaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'id_tipo_moradia'=>fake()->numberBetween(1,3),
+            'id_tamanho_residencia'=>fake()->numberBetween(1,10),
+            'endereço'=>fake()->address(),
+            'CEP'=>fake()->numberBetween(1,10),
+            'moradores'=>fake()->numberBetween(1,10)
         ];
     }
 }

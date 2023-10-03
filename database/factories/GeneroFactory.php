@@ -17,7 +17,7 @@ class GeneroFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'generos'=>fake()->numberBetween(1,2)
         ];
     }
 }

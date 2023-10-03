@@ -17,7 +17,11 @@ class AdocaoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'id_controle' => fake()->numberBetween(1,10),
+            'id_funcionario' => fake()->numberBetween(1,10),
+            'id_dono' => fake()->numberBetween(1,10),
+            'adocao' => fake()->date(),
+            'id_status_adocao' => fake()->numberBetween(1,3)
         ];
     }
 }

@@ -17,7 +17,7 @@ class TipoMoradiaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'tipo_moradia'=>fake()->numberBetween(1,3)
         ];
     }
 }
