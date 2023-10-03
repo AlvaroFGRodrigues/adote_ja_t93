@@ -12,10 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tipos', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_tipo');
+            $table->string('tipos',45);
             $table->timestamps();
+            $table->softDeletes();
         });
-    }
+
+        \App\Models\Tipo::create([
+            'id_tipo'=>1,
+            'tipo' => ''
+        ]);
+        \App\Models\Tipo::create([
+            'id_tipo'=>2,
+            'tipo' => 'Saida'
+        ]);
+
+        }
+    
 
     /**
      * Reverse the migrations.
