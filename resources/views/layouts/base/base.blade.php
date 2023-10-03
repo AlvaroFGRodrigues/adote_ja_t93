@@ -81,14 +81,13 @@
                     </div>
                     <div class="d-inline-flex flex-column text-center pl-3">
                         <h6>Telefone</h6>
-                        <p class="m-0">+55 011 969563941</p>
+                        <p class="m-0">+55 (11) 969563941</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Topbar End -->
-
 
     <!-- Navbar Start -->
     <div class="container-fluid p-0">
@@ -104,12 +103,9 @@
                 <div class="navbar-nav mr-auto py-0">
                     <a href="{{route('base')}}" class="nav-item nav-link active">Inicio</a>
                     <a href="{{route('sobre')}}" class="nav-item nav-link">Sobre</a>
-                    <a href="service.html" class="nav-item nav-link">Serviço</a>
-
-
                     <a href="contact.html" class="nav-item nav-link">Fale Conosco</a>
                 </div>
-
+                <a href="{{route('login')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Inscrever-se</a>
             </div>
         </nav>
     </div>
