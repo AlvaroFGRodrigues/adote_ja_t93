@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DonoHasResidencia;
+use App\Models\
+DonoHasResidencia,
+Dono,
+residencia
+
 use Illuminate\Http\Request;
 
 class DonoHasResidenciaController extends Controller
@@ -12,54 +16,8 @@ class DonoHasResidenciaController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(DonoHasResidencia $DonoHasResidencia)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(DonoHasResidencia $DonoHasResidencia)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, DonoHasResidencia $DonoHasResidencia)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(DonoHasResidencia $DonoHasResidencia)
-    {
-        //
-    }
+   
 }
