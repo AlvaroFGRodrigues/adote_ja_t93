@@ -33,10 +33,15 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('/base', function () {
-    return view('projeto.test');
+    return view('projeto.inicio');
 })->name("base");
 
 Route::get('/sobre', function () {
     return view('projeto.sobre');
 })->name("sobre");
+require __DIR__.'/auth.php';
+
+Route::get('/fale_conosco', function () {
+    return view('projeto.fale_conosco');
+})->name("conosco");
 require __DIR__.'/auth.php';
