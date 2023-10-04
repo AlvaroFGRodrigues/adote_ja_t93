@@ -16,14 +16,14 @@ class PetController extends Controller
     public function index()
     {
         $pets =Pet::orderBy('nome_pet')->paginate(10);
-        return view('pet.index')
+        return view('pets.index')
             ->with(compact('pets'));
     }
 
     public function create()
     {
         $pet = null;
-        return view('pet.form')
+        return view('pets.form')
             ->with(compact('pet'));
     }
 
@@ -32,7 +32,7 @@ class PetController extends Controller
     {
        PetController::create($request->all());
         return redirect()
-            ->route('pet.index')
+            ->route('pets.index')
             ->with('novo', 'Pet cadastrado com sucesso!');
     }
 
@@ -45,7 +45,7 @@ class PetController extends Controller
             'pet.generos'
         ])->find($id);
 
-        return view('pet.show')
+        return view('pets.show')
             ->with(compact('pet'));
     }
 
@@ -53,7 +53,7 @@ class PetController extends Controller
     public function edit(int $id)
     {
         $pet =PetController::find($id);
-        return view('pet.form')
+        return view('pets.form')
             ->with(compact('pet'));
     }
 
@@ -62,7 +62,7 @@ class PetController extends Controller
         $pet =PetController::find($id);
         $pet->update($request->all());
         return redirect()
-            ->route('pet.index')
+            ->route('pets.index')
             ->with('atualizado', 'Atualizado com sucesso!');
     }
 

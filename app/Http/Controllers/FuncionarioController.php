@@ -12,14 +12,14 @@ class FuncionarioController extends Controller
     public function index()
     {
         $funcionarios =Funcionario::orderBy('nome')->paginate(10);
-        return view('funcionario.index')
+        return view('funcionarios.index')
             ->with(compact('funcionarios'));
     }
 
     public function create()
     {
         $funcionario = null;
-        return view('funcionario.form')
+        return view('funcionarios.form')
             ->with(compact('funcionario'));
     }
 
@@ -28,7 +28,7 @@ class FuncionarioController extends Controller
     {
        FuncionarioController::create($request->all());
         return redirect()
-            ->route('funcionario.index')
+            ->route('funcionarios.index')
             ->with('novo', 'Funcionario cadastrado com sucesso!');
     }
 
@@ -41,7 +41,7 @@ class FuncionarioController extends Controller
 
         ])->find($id);
 
-        return view('funcionario.show')
+        return view('funcionarios.show')
             ->with(compact('funcionario'));
     }
 
@@ -49,7 +49,7 @@ class FuncionarioController extends Controller
     public function edit(int $id)
     {
         $funcionario =FuncionarioController::find($id);
-        return view('funcionario.form')
+        return view('funcionarios.form')
             ->with(compact('funcionario'));
     }
 
@@ -58,7 +58,7 @@ class FuncionarioController extends Controller
         $funcionario =FuncionarioController::find($id);
         $funcionario->update($request->all());
         return redirect()
-            ->route('funcionario.index')
+            ->route('funcionarios.index')
             ->with('atualizado', 'Atualizado com sucesso!');
     }
 
