@@ -3,63 +3,73 @@
 namespace App\Http\Controllers;
 
 use App\Models\Funcionario;
+use App\Models\Adocao;
 use Illuminate\Http\Request;
+
 
 class FuncionarioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $funcionarios =Funcionario::orderBy('nome')->paginate(10);
+        return view('funcionario.index')
+            ->with(compact('funcionarios'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $funcionario = null;
+        return view('funcionario.form')
+            ->with(compact('funcionario'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        //
+       FuncionarioController::create($request->all());
+        return redirect()
+            ->route('funcionario.index')
+            ->with('novo', 'Funcionario cadastrado com sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Funcionario $funcionario)
+    public function show(int $id )
     {
-        //
+        $funcionario =FuncionarioController::with([
+            'funcionario',
+            'funcionario.adocao'
+
+
+        ])->find($id);
+
+        return view('funcionario.show')
+            ->with(compact('funcionario'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Funcionario $funcionario)
+
+    public function edit(int $id)
     {
-        //
+        $funcionario =FuncionarioController::find($id);
+        return view('funcionario.form')
+            ->with(compact('funcionario'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Funcionario $funcionario)
+    public function update(Request $request, int $id)
     {
-        //
+        $funcionario =FuncionarioController::find($id);
+        $funcionario->update($request->all());
+        return redirect()
+            ->route('funcionario.index')
+            ->with('atualizado', 'Atualizado com sucesso!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Funcionario $funcionario)
+    public function destroy(int $id)
     {
-        //
+       FuncionarioController::find($id)->delete();
+        return redirect()
+            ->back()
+            ->with('excluido', 'Excluído com sucesso!');
     }
 }

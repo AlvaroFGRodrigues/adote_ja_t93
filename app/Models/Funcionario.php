@@ -11,7 +11,7 @@ class Funcionario extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'funcionario';
+    protected $table = 'funcionarios';
     protected $primaryKey = 'id_funcionario';
     protected $dates = [
         'created_at',
