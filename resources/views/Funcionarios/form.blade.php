@@ -1,6 +1,6 @@
 <form
     action="{{
-    $pet
+    $dono
     ?
     route('funcionario.update',['id'=>$funcionario->id_funcionario])
     :
@@ -10,7 +10,7 @@
     method="post" enctype="multipart/form-data" class="row g-3">
         @csrf
         <div class="col-md-6">
-            <label for="funcioanrio_custo" class="form-label">Funcionario*</label>
+            <label for="funcioanrio_custo" class="form-label">dono*</label>
             <input class="form-control"
             type="text"
             id="funcionario"
@@ -18,14 +18,14 @@
             value="{{
             $funcionario ?
             $funcionario->funcionario_custo  :
-            old('funcionario')
+            old('dono')
             }}"
             required>
         </div>
 
         <div class="col-md-2">
             <input class="btn btn-primary mt-4" type="submit"
-        value="{{$pet ?
+        value="{{$dono ?
             'Atualizar' :
             'Cadastrar'
             }}">
