@@ -33,7 +33,7 @@ class DonoController extends Controller
     {
        DonoController::create($request->all());
         return redirect()
-            ->route('donos.index')
+            ->route('dono.index')
             ->with('novo', 'Dono cadastrado com sucesso!');
     }
 

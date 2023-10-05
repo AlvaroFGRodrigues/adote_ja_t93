@@ -1,6 +1,6 @@
 <form
     action="{{
-    $pet
+    $dono
     ?
     route('dono.update',['id'=>$dono->id_dono])
     :
@@ -25,7 +25,7 @@
 
         <div class="col-md-2">
             <input class="btn btn-primary mt-4" type="submit"
-        value="{{$pet ?
+        value="{{$dono ?
             'Atualizar' :
             'Cadastrar'
             }}">

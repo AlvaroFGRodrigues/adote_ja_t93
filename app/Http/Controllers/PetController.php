@@ -9,13 +9,24 @@ use App\Models\Genero;
 use App\Models\Adocao;
 use Illuminate\Http\Request;
 
+use Illuminate\Pagination\Paginator;
+
+/**
+ * Bootstrap any application services.
+ */
+
 class PetController extends Controller
 
 {
+    public function boot(): void
+{
+    Paginator::useBootstrapFive();
+    Paginator::useBootstrapFour();
+}
 
     public function index()
     {
-        $pets =Pet::orderBy('nome_pet')->paginate(10);
+        $pets =Pet::orderBy('nome_pet');
         return view('pets.index')
             ->with(compact('pets'));
     }
