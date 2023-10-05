@@ -1,6 +1,6 @@
 <form
     action="{{
-    $dono
+    $funcionario
     ?
     route('funcionario.update',['id'=>$funcionario->id_funcionario])
     :
@@ -18,14 +18,14 @@
             value="{{
             $funcionario ?
             $funcionario->funcionario_custo  :
-            old('dono')
+            old('funcionario')
             }}"
             required>
         </div>
 
         <div class="col-md-2">
             <input class="btn btn-primary mt-4" type="submit"
-        value="{{$dono ?
+        value="{{$funcionario ?
             'Atualizar' :
             'Cadastrar'
             }}">
