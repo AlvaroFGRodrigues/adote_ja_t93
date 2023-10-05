@@ -1,61 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>teste</title>
+</head>
+</html>
+@extends('layouts.base')
+@section('content')
 <h1>
-    <i class="bi bi-list-check"></i>
-  Pets
-    -
-    <a class="btn btn-primary" href="{{ route('pet.create') }}">
-     Cadastro de Pets
+    <i class="bi bi-wallet2"></i>
+    - Cadastro de donos
+    |
+    <a class="btn btn-primary" href="{{ route('funcionario.create') }}">
+        Novas adoções
     </a>
 </h1>
 
 {{-- alerts --}}
-{{-- @include('layouts.partials.alerts') --}}
+@include('layouts.partials.alerts')
 {{-- /alerts --}}
+{{-- paginação --}}
+{{-- {!! $donos->appends([
+                            'search'=>request()->get('search','')
+                        ])->links() !!} --}}
+                        {{ $funcionarios->links() }}
+{{-- /paginação --}}
+{{-- pesquisa --}}
+<form action="{{ route('funcionario.index') }}" method="get">
 
+<div class="row ">
+        <div class="col-md-5">
+            Pets
+            <input class="form-control col-md-6 " type="search" name="search" id="search"
+                placeholder="Digite o nome do Pet..."
+                value="{{ old('search',request()->get('search')) }}">
+        </div >
+        <div class="col-md-5">
+            Clientes
+            <input class="form-control col-md-6" type="search" name="search" id="search"
+                placeholder="Digite o nome do Cliente..."
+                value="{{ old('search',request()->get('search')) }}">
+        </div>
+        {{-- data inicial --}}
+        <div class="col-md-4">
+            <label class="form-label" for="dt_inicial">
+                Data inicial
+            </label>
+            <input class="form-control"
+            type="date" name="dt_inicial" id="dt_inicial">
+        </div>
+        {{-- /data inicial --}}
+        {{-- data final --}}
+        <div class="col-md-4">
+            <label class="form-label" for="dt_final">
+                Data final
+            </label>
+            <input
+            class="form-control" type="date"
+            name="dt_final" id="dt_final">
+        </div>
+        {{-- /data final --}}
+        <div class="col-md-3">
+            <label for="id_adocao" class="form-label">Status</label>
+            <select id="id_adocao" name="id_adocao" class="form-select" >
+                <option value="">Escolha...</option>
+                @foreach ($funcionarios as $funcionario )
+                <option value="{{$funcionario->funcionario}}">
+                    {{ $funcionario->funcionarios}}
+                </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div>
+            <br>
+            <input class="btn btn-success col-md-1" type="submit" value="Pesquisar">
+        </div>
+
+        @if(request()->get('search') !='')
+        <a class="btn btn-primary col-md-1"
+            href="{{ route('funcionarios.index') }}">
+          Limpar
+        </a>
+        @endif
+
+    </form>
+</div>
+{{-- /pesquisa --}}
 <div class="table-responsive">
     <table class="table table-striped  table-hover ">
         <thead>
-            <caption> Lista de Funcionario</caption>
             <tr>
-                <th class="col-2">#</th>
-                <th>Funcionarios</th>
-                <th>Funcionarios Cadastrados</th>
+                <th>#</th>
+                <th>Pets</th>
+                <th>Cliente</th>
+                <th>Status</th>
+                <th>Historico Adoção</th>
+                <th>Data inicial</th>
+                <th>Data inicial</th>
             </tr>
         </thead>
-        <tbody class="table-group-divider">
-            @foreach ($funcionarios as $funcionario)
-                <tr>
-                    <td scope="row">
-                        <div class="flex-column">
-                                {{-- ver --}}
-                                <a class="btn btn-success"
-                                    href="{{ route('funcionario.show',
-                                                ['id'=>$funcionario->id_funcionario]
-                                                ) }}">
-                                    <i class="bi bi-eye"></i>
-                                </a>
-                            {{-- editar --}}
-                            <a class="btn btn-dark"
-                                href="{{ route('funcionario.edit', ['id' => $funcionario->id_funcionario]) }}">
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
-                            {{-- excluir --}}
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#modalExcluir"
-                                data-identificacao="{{ $funcionario->id_funcionario }}"
-                                data-url="{{ route('funcionario.destroy',
-                                 ['id' => $funcionario->id_funcionario]) }}">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </div>
-                    </td>
-                    <td>
-                        {{ $funcionario->funcionario }}
-                    </td>
-                    <td>
-                          {{-- {{ $pet->pet()->count() }} --}}
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
     </table>
 </div>
+</table>
+</div>
+
+
+
+{{-- Modal Excluir --}}
+@include('layouts.partials.modalExcluir')
+{{-- /Modal Excluir --}}
+@endsection
+@section('scripts')
+@parent
+
+@endsection

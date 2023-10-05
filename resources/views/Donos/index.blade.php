@@ -11,7 +11,7 @@
 @section('content')
 <h1>
     <i class="bi bi-wallet2"></i>
-    - ADOÇÕES
+    - Cadastro de donos
     |
     <a class="btn btn-primary" href="{{ route('dono.create') }}">
         Novas adoções
@@ -63,8 +63,8 @@
         </div>
         {{-- /data final --}}
         <div class="col-md-3">
-            <label for="id_adocao" class="form-label">Status</label>
-            <select id="id_adocao" name="id_adocao" class="form-select" >
+            <label for="id_dono" class="form-label">Status</label>
+            <select id="id_dono" name="id_dono" class="form-select" >
                 <option value="">Escolha...</option>
                 @foreach ($donos as $dono )
                 <option value="{{$dono->dono}}">
