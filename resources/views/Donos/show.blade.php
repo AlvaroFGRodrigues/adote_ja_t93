@@ -2,7 +2,7 @@
 @section('content')
     <h1>
         <i class="bi bi-list-check"></i>
-        Centro de Custo: {!! $dono->id_dono !!}
+        Donos: {!! $dono->id_dono !!}
     </h1>
     <h2>
         Listas de Lancamentos -

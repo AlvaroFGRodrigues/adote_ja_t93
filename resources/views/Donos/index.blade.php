@@ -93,15 +93,28 @@
     <table class="table table-striped  table-hover ">
         <thead>
             <tr>
-                <th>#</th>
-                <th>Pets</th>
-                <th>Cliente</th>
-                <th>Status</th>
-                <th>Historico Adoção</th>
-                <th>Data inicial</th>
-                <th>Data inicial</th>
+                <th>Id</th>
+                <th>Dono</th>
+                <th>Apto</th>
+
             </tr>
         </thead>
+        <tbody>
+            @foreach ($donos as $dono)
+            <tr>
+                <td>{{$dono->id_dono}}</td>
+                <td>{{ $dono->nome}}</td>
+                <td>{{$dono->apto}}</td>
+                {{-- <td>{{$dono->nascimento}}</td> --}}
+                {{-- <td>{{$dono->email}}</td> --}}
+                {{-- <td>{{$dono->telefone}}</td> --}}
+                {{-- <td>{{$dono->cpf}}</td> --}}
+            </tr>
+
+            @endforeach
+
+
+        </tbody>
     </table>
 </div>
 </table>

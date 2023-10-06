@@ -1,61 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>teste</title>
+</head>
+</html>
+@extends('layouts.base')
+@section('content')
 <h1>
-    <i class="bi bi-list-check"></i>
-  Pets
-    -
+    <i class="bi bi-wallet2"></i>
+    - Cadastro de Pets
+    |
     <a class="btn btn-primary" href="{{ route('pet.create') }}">
-     Cadastro de Pets
+        Novas adoções
     </a>
 </h1>
 
 {{-- alerts --}}
-{{-- @include('layouts.partials.alerts') --}}
+@include('layouts.partials.alerts')
 {{-- /alerts --}}
+{{-- paginação --}}
+{{-- {!! $donos->appends([
+                            'search'=>request()->get('search','')
+                        ])->links() !!} --}}
+                        {{ $pets->links() }}
+{{-- /paginação --}}
+{{-- pesquisa --}}
+<form action="{{ route('pet.index') }}" method="get">
 
+<div class="row ">
+        <div class="col-md-5">
+            Pets
+            <input class="form-control col-md-6 " type="search" name="search" id="search"
+                placeholder="Digite o nome do Pet..."
+                value="{{ old('search',request()->get('search')) }}">
+        </div >
+        <div class="col-md-5">
+            Clientes
+            <input class="form-control col-md-6" type="search" name="search" id="search"
+                placeholder="Digite o nome do Cliente..."
+                value="{{ old('search',request()->get('search')) }}">
+        </div>
+        {{-- data inicial --}}
+        <div class="col-md-4">
+            <label class="form-label" for="dt_inicial">
+                Data inicial
+            </label>
+            <input class="form-control"
+            type="date" name="dt_inicial" id="dt_inicial">
+        </div>
+        {{-- /data inicial --}}
+        {{-- data final --}}
+        <div class="col-md-4">
+            <label class="form-label" for="dt_final">
+                Data final
+            </label>
+            <input
+            class="form-control" type="date"
+            name="dt_final" id="dt_final">
+        </div>
+        {{-- /data final --}}
+        <div class="col-md-3">
+            <label for="id_adocao" class="form-label">Status</label>
+            <select id="id_adocao" name="id_adocao" class="form-select" >
+                <option value="">Escolha...</option>
+                @foreach ($pets as $pet )
+                <option value="{{$pet->pet}}">
+                    {{ $pet->pets}}
+                </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div>
+            <br>
+            <input class="btn btn-success col-md-1" type="submit" value="Pesquisar">
+        </div>
+
+        @if(request()->get('search') !='')
+        <a class="btn btn-primary col-md-1"
+            href="{{ route('pets.index') }}">
+          Limpar
+        </a>
+        @endif
+
+    </form>
+</div>
+{{-- /pesquisa --}}
 <div class="table-responsive">
     <table class="table table-striped  table-hover ">
         <thead>
-            <caption> Lista de Pets</caption>
             <tr>
-                <th class="col-2">#</th>
-                <th>Pet</th>
-                <th>Pets Cadastrados</th>
+                <th>#</th>
+                <th>Pets</th>
+                <th>Cliente</th>
+                <th>Status</th>
+                <th>Historico Adoção</th>
+                <th>Data inicial</th>
+                <th>Data inicial</th>
             </tr>
         </thead>
-        <tbody class="table-group-divider">
-            @foreach ($pets as $pet)
-                <tr>
-                    <td scope="row">
-                        <div class="flex-column">
-                                {{-- ver --}}
-                                <a class="btn btn-success"
-                                    href="{{ route('pet.show',
-                                                ['id'=>$pet->id_pet]
-                                                ) }}">
-                                    <i class="bi bi-eye"></i>
-                                </a>
-                            {{-- editar --}}
-                            <a class="btn btn-dark"
-                                href="{{ route('pet.edit', ['id' => $pet->id_pet]) }}">
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
-                            {{-- excluir --}}
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#modalExcluir"
-                                data-identificacao="{{ $pet->id_pet }}"
-                                data-url="{{ route('pet.destroy',
-                                 ['id' => $pet->id_pet]) }}">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </div>
-                    </td>
-                    <td>
-                        {{ $pet->pet }}
-                    </td>
-                    <td>
-                          {{-- {{ $pet->pet()->count() }} --}}
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
     </table>
 </div>
+</table>
+</div>
+
+
+
+{{-- Modal Excluir --}}
+@include('layouts.partials.modalExcluir')
+{{-- /Modal Excluir --}}
+@endsection
+@section('scripts')
+@parent
+
+@endsection

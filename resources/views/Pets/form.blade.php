@@ -10,7 +10,7 @@
     method="post" enctype="multipart/form-data" class="row g-3">
         @csrf
         <div class="col-md-6">
-            <label for="pet_custo" class="form-label">pet de Custo*</label>
+            <label for="pet_custo" class="form-label">dono*</label>
             <input class="form-control"
             type="text"
             id="pet"

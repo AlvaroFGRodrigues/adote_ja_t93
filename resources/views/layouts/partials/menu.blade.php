@@ -15,15 +15,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('dono.index') }}">
+                    <a class="nav-link" href="{{ route('pet.index') }}">
                         <i class="bi bi-wallet2"></i>
-                        Lançamentos
+                        Pets
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('pet.index') }}">
+                    <a class="nav-link" href="{{ route('dono.index') }}">
                         <i class="bi bi-list-check"></i>
-                        Centro de Custo
+                        Dono
                     </a>
                 </li>
                 <li class="nav-item">
