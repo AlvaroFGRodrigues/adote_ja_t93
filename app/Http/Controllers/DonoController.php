@@ -24,8 +24,9 @@ class DonoController extends Controller
     public function create()
     {
         $dono = null;
+        $listaDestatus = Status::class;
         return view('donos.form')
-            ->with(compact('dono'));
+            ->with(compact('dono','listaDestatus'));
     }
 
 
