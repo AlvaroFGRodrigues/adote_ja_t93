@@ -11,7 +11,7 @@
 @section('content')
 <h1>
     <i class="bi bi-wallet2"></i>
-    - Cadastro de Pets
+    - Lista de Pets
     |
     <a class="btn btn-primary" href="{{ route('pet.create') }}">
         Cadastre seu Pet!

@@ -11,7 +11,7 @@
 @section('content')
 <h1>
     <i class="bi bi-wallet2"></i>
-    - Cadastro de donos
+    - Lista de Donos
     |
     <a class="btn btn-primary" href="{{ route('dono.create') }}">
         Cadastro de Donos
