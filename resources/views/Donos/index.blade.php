@@ -14,7 +14,7 @@
     - Cadastro de donos
     |
     <a class="btn btn-primary" href="{{ route('dono.create') }}">
-        Novas adoções
+        Cadastro de Donos
     </a>
 </h1>
 

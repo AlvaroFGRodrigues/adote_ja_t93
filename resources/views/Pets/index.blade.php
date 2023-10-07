@@ -14,7 +14,7 @@
     - Cadastro de Pets
     |
     <a class="btn btn-primary" href="{{ route('pet.create') }}">
-        Novas adoções
+        Cadastre seu Pet!
     </a>
 </h1>
 
