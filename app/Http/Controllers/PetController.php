@@ -37,45 +37,35 @@ class PetController extends Controller
 //     Paginator::useBootstrapFour();
 // }
 
-    public function index()
+    public function index(Request $request)
     {
-        // $pets =Pet::orderBy('nome_pet')->paginate(10);
-        // return view('pets.index')
-        //     ->with(compact('pets'));
+        $search = $request->get('search');
+        $id_porte = $request->get('id_porte');
 
-        //     $lancamentos = Pet::with(['id_pet', 'nome_pet', 'porte'])
-        //     ->where(function ($query) use (
-        //         $search,
+        $pets = Pet::with(['tipos', 'porte', 'genero'])
+            ->where(function ($query) use (
+                $search,
+                $id_porte,
+            ) {
 
-        //         $id_pet,
-        //         $nome_pet,
-        //         $porte,
+                if ($search) {
+                    $query->orwhere('nome_pet','like' , "%$search%");
+                    $query->orwhere('id_pet',  $search);
+                }
+                if ($id_porte) {
+                    $query->orwhere('id_porte', $id_porte);
+                }
 
-        //     ) {
-        //         if ($search) {
-        //             $query->where('descricao', 'like', "%$search%");
-        //         }
+            })->orderBy('id_pet', 'desc')
+                ->paginate(40);
 
-        //         if ($id_pet) {
-        //             $query->where('pet', '>=', $id_pet);
-        //         }
+                $portes = Porte::class;
 
-        //         if ($nome_pet) {
-        //             $query->where('vencimento', '<=', $nome_pe);
-        //         }
-        //         if ($porte) {
-        //             $query->where('id_tipo', $porte);
-        //         }
-
-        //     })->orderBy('id_pet', 'desc')
-        //         ->paginate(40);
-
-        //         return view('pet.index')
-        //         ->with(compact(
-        //             'pets',
-        //             'porte',
-        //             'tipo'
-        //         ));
+                return view('Pets.index')
+                ->with(compact(
+                    'pets',
+                    'portes',
+                ));
     }
 
     public function create()

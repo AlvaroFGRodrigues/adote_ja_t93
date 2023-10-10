@@ -4,24 +4,6 @@
         <i class="bi bi-list-check"></i>
         Pet: {!! $pet->id_pet !!}
     </h1>
-    <h2>
-        Listas de Lancamentos -
-        {{ $pets->pet()->count() }}
-        itens
-    </h2>
-    <p class="fs-5">
-        Total Entradas: R$
-        {{ $pets->pet()->where('id_pet', 1)->sum('valor') }}
-        <br>
-        Total Saidas: R$ -
-        {{ $pets->pet()->where('id_pet', 2)->sum('valor') }}
-        <br>
-        Saldo R$
-        {{
-            $pets->pet()->where('id_pet', 1)->sum('valor')
-            -
-            $pets->pet()->where('id_pet', 2)->sum('valor')
-        }}
 
     </p>
     <div class="table-responsive">

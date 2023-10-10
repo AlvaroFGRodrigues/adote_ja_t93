@@ -18,23 +18,23 @@
     {{-- <div class="col-md-3">
         <label for="id_status" class="form-label">Status*</label>
         <select id="id_status" name="id_status" class="form-select" required>
-            <option value="">Escolha...</option>
-                @foreach ($listaDestatus::orderBy('status')->get() as $status )
+            {{-- <option value="">Escolha...</option>
+                @foreach ($pets::orderBy('status')->get() as $pets )
                     <option value="{{$status->id_status}}"
                         @selected(
                             (
-                                $status &&
-                                $status->id_status == $status->id_status
+                                $pets &&
+                                $pets->id_pet == $pets->id_pets
                             )
                             ||
-                            old('id_status') == $status->id_status
+                            old('id_pets') == $pet->id_pets
                         )
                     >
                         {{ $status->status}}
                     </option>
                 @endforeach
         </select>
-    </div> --}}
+    </div>--}}
 
     <div class="col-md-2">
         <label for="id_porte" class="form-label"></label>

@@ -27,65 +27,45 @@
 {{-- pesquisa --}}
 
 
-<div class="row ">
+
     <form action="{{ route('pet.index') }}" method="get">
+        <div class="row ">
         <div class="col-md-5">
             Pets
             <input class="form-control col-md-6 " type="search" name="search" id="search"
                 placeholder="Digite o nome do Pet..."
                 value="{{ old('search',request()->get('search')) }}">
         </div >
-        {{-- <div class="col-md-5">
-            Clientes
-            <input class="form-control col-md-6" type="search" name="search" id="search"
-                placeholder="Digite o nome do Cliente..."
-                value="{{ old('search',request()->get('search')) }}">
-        </div> --}}
-        {{-- data inicial --}}
-        {{-- <div class="col-md-4">
-            <label class="form-label" for="dt_inicial">
-                Data inicial
-            </label>
-            <input class="form-control"
-            type="date" name="dt_inicial" id="dt_inicial">
-        </div> --}}
-        {{-- /data inicial --}}
-        {{-- data final --}}
-        {{-- <div class="col-md-4">
-            <label class="form-label" for="dt_final">
-                Data final
-            </label>
-            <input
-            class="form-control" type="date"
-            name="dt_final" id="dt_final">
-        </div> --}}
-        {{-- /data final --}}
-        {{-- <div class="col-md-3">
-            <label for="id_adocao" class="form-label">Status</label>
-            <select id="id_adocao" name="id_adocao" class="form-select" >
+
+
+
+        <div class="col-md-3">
+            <label for="id_porte" class="form-label">Porte</label>
+            <select id="id_porte" name="id_porte" class="form-select" >
                 <option value="">Escolha...</option>
-                @foreach ($pets as $pet )
-                <option value="{{$pet->pet}}">
-                    {{ $pet->pets}}
+                @foreach ($portes::all() as $porte )
+                <option value="{{$porte->id_porte}}">
+                    {{ $porte->porte}}
                 </option>
                 @endforeach
             </select>
-        </div> --}}
-
-        <div>
-            <br>
-            <input class="btn btn-success col-md-1" type="submit" value="Pesquisar" name="search">
         </div>
 
-        @if(request()->get('search') !='')
-        <a class="btn btn-primary col-md-1"
-            href="{{ route('pet.index') }}">
-          Limpar
-        </a>
-        @endif
+        <div class=" col-md-2">
+            <input class="btn btn-success mt-4" type="submit" value="Pesquisar">
+        </div>
 
-    </form>
+        @if(request()->get('search') !='' || request()->get('id_porte') !='')
+        <div class=" col-md-2">
+            <a class="btn btn-primary mt-4"
+                href="{{ route('pet.index') }}">
+            Limpar
+            </a>
+        </div>
+        @endif
 </div>
+    </form>
+
 {{-- /pesquisa --}}
 <div class="table-responsive">
     <table class="table table-striped  table-hover ">
