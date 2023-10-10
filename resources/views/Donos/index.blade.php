@@ -32,35 +32,35 @@
 
 <div class="row ">
         <div class="col-md-5">
-            Pets
+            Nome do dono
             <input class="form-control col-md-6 " type="search" name="search" id="search"
                 placeholder="Digite o nome do Pet..."
                 value="{{ old('search',request()->get('search')) }}">
         </div >
-        <div class="col-md-5">
+        {{-- <div class="col-md-5">
             Clientes
             <input class="form-control col-md-6" type="search" name="search" id="search"
                 placeholder="Digite o nome do Cliente..."
                 value="{{ old('search',request()->get('search')) }}">
-        </div>
+        </div> --}}
         {{-- data inicial --}}
-        <div class="col-md-4">
+        {{-- <div class="col-md-4">
             <label class="form-label" for="dt_inicial">
                 Data inicial
             </label>
             <input class="form-control"
             type="date" name="dt_inicial" id="dt_inicial">
-        </div>
+        </div> --}}
         {{-- /data inicial --}}
         {{-- data final --}}
-        <div class="col-md-4">
+        {{-- <div class="col-md-4">
             <label class="form-label" for="dt_final">
                 Data final
             </label>
             <input
             class="form-control" type="date"
             name="dt_final" id="dt_final">
-        </div>
+        </div> --}}
         {{-- /data final --}}
         <div class="col-md-3">
             <label for="id_dono" class="form-label">Status</label>

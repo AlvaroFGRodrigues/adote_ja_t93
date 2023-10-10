@@ -36,8 +36,41 @@
         </select>
     </div> --}}
 
+    <div class="col-md-2">
+        <label for="id_porte" class="form-label"></label>
+        <select name="id_porte" id="id_porte" class="form-select">
+            @foreach ( $portes::all() as $item)
+                <option value="{{$item->id_porte}}">
+                {{$item->porte}}
+                </option>
+            @endforeach
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label for="id_genero" class="form-label"></label>
+        <select name="id_genero" id="id_genero" class="form-select">
+            @foreach ($generos::all() as $item)
+                <option value="{{$item->id_genero}}">
+                {{$item->genero}}
+                </option>
+            @endforeach
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label for="id_tipo" class="form-label"></label>
+        <select name="id_tipo" id="id_tipo" class="form-select">
+            @foreach ( $tipos::all() as $item)
+                <option value="{{$item->id_tipo}}">
+                {{$item->tipo}}
+                </option>
+            @endforeach
+        </select>
+    </div>
+
+
+
     <div class="col-md-9">
-        <label class="form-label" for="nome_pet">Nome*</label>
+        <label class="form-label" for="pet">Nome*</label>
         <input class="form-control" type="text" id="nome_pet" name="nome_pet"
         value="{{
             $pet ?
@@ -61,7 +94,7 @@
 
     <div class="col-md-3">
         <label class="form-label" for="idade_pet">Idade*</label>
-        <input class="form-control" type="number" id="idade_pet" name="idade_idade"
+        <input class="form-control" type="number" id="idade_pet" name="idade_pet"
         value="{{
             $pet ?
             $pets->idade_pet :
@@ -116,7 +149,7 @@
             $pets-> vacinas :
             old(' vacinas')
           }}"
-          required>
+         >
     </div>
 
 
@@ -130,7 +163,7 @@
             $pets-> racao :
             old(' racao')
           }}"
-          required>
+         >
 
     </div>
 
@@ -150,7 +183,7 @@
             $pets->historico :
             old('historico')
           }}"
-          required>
+          >
     </div>
 
 

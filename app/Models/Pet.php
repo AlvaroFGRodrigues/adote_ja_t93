@@ -29,6 +29,7 @@ class Pet extends Model
         'id_controle',
         'nome_pet',
         'idade_pet',
+        'raca_pet',
         'descricao',
         'vacinas',
         'racao',
