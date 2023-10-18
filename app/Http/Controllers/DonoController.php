@@ -14,100 +14,131 @@ use Illuminate\Http\Request;
 
 class DonoController extends Controller
 {
-     public function index(Request $request)
+
+    // /\*\*
+    // Display a listing of the resource.
+
+    // */
+
+    public function index()
+
     {
-        $search = $request->get('search');
-        $id_dono = $request->get('id_dono');
-        $id_status = $request->get('id_status');
 
-        $donos = Donos::with(['DonoHasResidencia', 'status','adocao'])
-            ->where(function ($query) use (
-                $search,
-                $id_dono,
-                $id_status
-            ) {
+      $dono = Donos::orderBy('id_dono','desc');
 
-                if ($search) {
-                    $query->orwhere('nome','like' , "%$search%");
-                    $query->orwhere('id_dono',  $search);
-                }
-                if ($id_dono) {
-                    $query->orwhere('id_dono', $id_dono);
-                }
-                if ($id_status) {
-                    $query->orwhere('id_status', $id_status);
-                }
+      //->paginate(10);
+    return view('donos.index');
 
-            })->orderBy('id_status', 'desc')
-                 ->paginate(40)
-                ;
+        //\->with(compact('dono$dono'));
 
-                $id_status = id_status::class;
-
-                return view('Donos.index')
-                ->with(compact(
-                    'status',
-                    'id_status',
-                ));
     }
+
+
+
+    // /\*\*
+    // Show the form for creating a new resource.
+
+    // */
 
     public function create()
+
     {
-        $dono = null;
-        $listaDestatus = Status::class;
-        return view('donos.form')
-            ->with(compact('dono','listaDestatus'));
+
+      $dono = null;
+
+      return view('donos.form')->with(compact('donos'));
     }
 
+    // /\*\*
+    // Store a newly created resource in storage.
+
+    // */
 
     public function store(Request $request)
+
     {
-       DonoController::create($request->all());
-        return redirect()
-            ->route('dono.index')
-            ->with('novo', 'Dono cadastrado com sucesso!');
+
+      // dd($request->all());
+        Donos::create($request->all());
+
+        return redirect()->route('donos.index')->with('novo', 'Donos cadastrado com sucesso!');
+
     }
+
+
+
+    // /\*\*
+    // Display the specified resource.
+
+    // */
 
     public function show(int $id )
     {
-        $dono =DonoController::with([
-            'dono',
-            'dono.adocao',
-            'dono.status',
-            'dono.dono_has_residencia'
+        $dono=Donos::with([
+            'id_dono',
+            'nome',
 
 
-        ])->find($id);
+        ])->find($id
+    );
 
-        return view('dono.show')
+        return view('donos.show')
             ->with(compact('dono'));
     }
 
 
-    public function edit(int $id)
+
+    // /\*\*
+    // Show the form for editing the specified resource.
+
+    // */
+
+    public function edit(Donos $id)
+
     {
-        $dono =DonoController::find($id);
-        return view('dono.form')
-            ->with(compact('dono'));
+
+      $dono = Donos::find($id)->first();
+
+      return view('donos.form')
+
+          ->with(compact('dono'));
     }
 
-    public function update(Request $request, int $id)
+    // /\*\*
+    // Update the specified resource in storage.
+
+    // */
+
+    public function update(Request $request, Int $id)
+
     {
-        $dono =DonoController::find($id);
-        $dono->update($request->all());
-        return redirect()
-            ->route('donos.index')
-            ->with('atualizado', 'Atualizado com sucesso!');
+
+      $dono = Donos::find($id);
+
+      $dono->update($request->all());
+
+      return redirect()
+
+          ->route('donos.index')
+->with('atualizado', ' Donos Atualizado com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // /\*\*
+    // Remove the specified resource from storage.
+
+    // */
+
     public function destroy(int $id)
+
     {
-       DonoController::find($id)->delete();
-        return redirect()
-            ->back()
-            ->with('excluido', 'Excluído com sucesso!');
+
+      Donos::find($id)->delete();
+
+      return redirect()
+
+          ->back()
+
+          ->with('excluido', 'Excluído com sucesso!');
     }
-}
+
+    }
