@@ -10,18 +10,6 @@
         itens
     </h2>
     <p class="fs-5">
-        Total Entradas: R$
-        {{ $donos->dono()->where('id_dono', 1)->sum('valor') }}
-        <br>
-        Total Saidas: R$ -
-        {{ $donos->dono()->where('id_dono', 2)->sum('valor') }}
-        <br>
-        Saldo R$
-        {{
-            $donos->dono()->where('id_dono', 1)->sum('valor')
-            -
-            $donos->dono()->where('id_dono', 2)->sum('valor')
-        }}
 
     </p>
     <div class="table-responsive">

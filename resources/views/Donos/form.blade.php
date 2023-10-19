@@ -15,26 +15,6 @@
         route('dono.store')
     }}" method="post" enctype="multipart/form-data" class="row g-3">
     @csrf
-    <div class="col-md-3">
-        <label for="id_status" class="form-label">Status*</label>
-        <select id="id_status" name="id_status" class="form-select" required>
-            <option value="">Escolha...</option>
-                @foreach ($listaDestatus::orderBy('status')->get() as $status )
-                    <option value="{{$status->id_status}}"
-                        @selected(
-                            (
-                                $status &&
-                                $status->id_status == $status->id_status
-                            )
-                            ||
-                            old('id_status') == $status->id_status
-                        )
-                    >
-                        {{ $status->status}}
-                    </option>
-                @endforeach
-        </select>
-    </div>
 
     <div class="col-md-9">
         <label class="form-label" for="nome">Nome*</label>

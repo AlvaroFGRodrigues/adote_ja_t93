@@ -11,6 +11,7 @@ use App\Models\{
 };
 
 use Illuminate\Http\Request;
+use NunoMaduro\Collision\Adapters\Phpunit\State;
 
 class DonoController extends Controller
 {
@@ -24,12 +25,12 @@ class DonoController extends Controller
 
     {
 
-      $dono = Donos::orderBy('id_dono','desc');
+      $dono = Donos::orderBy('id_dono');
+      $donos = Donos::orderBy('id_dono')
+      ->paginate(10);
+    return view('donos.index')
 
-      //->paginate(10);
-    return view('donos.index');
-
-        //\->with(compact('dono$dono'));
+    ->with(compact('dono','donos'));
 
     }
 
@@ -41,12 +42,15 @@ class DonoController extends Controller
     // */
 
     public function create()
-
     {
+        $dono = null;
+        $adocao = Adocao::class;
+        $dono_has_residencia = DonoHasResidencia::class;
+        $status = Status::class;
 
-      $dono = null;
 
-      return view('donos.form')->with(compact('donos'));
+        return view('donos.form')
+            ->with(compact('dono','adocao','donohasresidencias','status'));
     }
 
     // /\*\*
@@ -59,9 +63,10 @@ class DonoController extends Controller
     {
 
       // dd($request->all());
-        Donos::create($request->all());
-
-        return redirect()->route('donos.index')->with('novo', 'Donos cadastrado com sucesso!');
+      $dono = Donos::create($request->all());
+      return redirect()
+          ->route('donos.index')
+          ->with('novo', 'Pet cadastrado com sucesso!');
 
     }
 
@@ -76,7 +81,7 @@ class DonoController extends Controller
     {
         $dono=Donos::with([
             'id_dono',
-            'nome',
+
 
 
         ])->find($id

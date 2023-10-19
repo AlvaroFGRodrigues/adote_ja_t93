@@ -82,7 +82,7 @@ CLIENTES
 
                         <a class="btn btn-success"
 
-                            href="{{ route('dono.show',['id_dono'=>$dono->dono])}}">
+                            href="{{ route('donos.show',['id_dono'=>$dono->dono])}}">
 
                             <i class="bi bi-eye"></i>
 
@@ -94,7 +94,7 @@ CLIENTES
 
                         <a class="btn btn-dark"
 
-                                href="{{ route('dono.edit', ['id' => $dono->id_dono]) }}">
+                                href="{{ route('dono.edit', ['id' => $donos->id_dono]) }}">
 
                                 <i class="bi bi-pencil-square"></i>
 
